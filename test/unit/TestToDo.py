@@ -245,6 +245,16 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", None))
         print ('End: test_delete_todo_error')
 
+    def test_updateItem_noExists(self):
+        print ('---------------------')
+        print ('Start: test_updateItem_noExists')
+
+        from src.todoList import update_item
+        result = update_item(None,'Nuevo texto de prueba',False,self.dynamodb)
+        print ('Response update_item' + str(result))
+        print ('End: test_updateItem_noExists')
+        
+
     def test_dynamodb_noExists(self):
         print ('---------------------')
         print ('Start: test_dynamodb_noExists')
