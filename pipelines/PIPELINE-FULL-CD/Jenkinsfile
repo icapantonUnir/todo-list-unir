@@ -5,7 +5,7 @@ pipeline {
         stage('Staging'){
             steps{
                 echo 'Starting staging job'
-                build job: 'PIPELINE-FULL-STAGING', parameters: [
+                build job: 'full-staging', parameters: [
                       string(name:'ENVIRONMENT', value: "staging")]
             }
         }
@@ -15,11 +15,11 @@ pipeline {
                     set -x
                     git branch -a
                     git checkout -b develop origin/develop
-                    git checkout -b master origin/master
+                    git checkout -b main origin/main
                     git merge develop
-                """, label: "Merging code to master"
-                sshagent(['github']) {
-                    sh "git push origin master"
+                """, label: "Merging code to main"
+                sshagent(['GitHub_icapantonUnir_todo-list-aws']) {
+                    sh "git push origin main"
                 }
 
             }
@@ -28,7 +28,7 @@ pipeline {
             steps{
                 
                 echo 'Starting production job'
-                build job: 'PIPELINE-FULL-PRODUCTION', parameters: [
+                build job: 'full-production', parameters: [
                       string(name:'ENVIRONMENT', value: "production")]
             }
         }
