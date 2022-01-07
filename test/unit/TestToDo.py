@@ -253,16 +253,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         result = update_item(None,'Nuevo texto de prueba',False,self.dynamodb)
         print ('Response update_item' + str(result))
         print ('End: test_updateItem_noExists')
-        
-
-    def test_dynamodb_noExists(self):
-        print ('---------------------')
-        print ('Start: test_dynamodb_noExists')
-
-        from src.todoList import get_items
-        result = get_items()
-        print ('Response GetItems' + str(result))
-        print ('End: test_dynamodb_noExists')        
+     
 
 if __name__ == '__main__':
     unittest.main()
