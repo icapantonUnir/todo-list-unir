@@ -188,7 +188,7 @@ class TestDatabaseFunctions(unittest.TestCase):
 
     def test_update_todo_error(self):
         print ('---------------------')
-        print ('Start: atest_update_todo_error')
+        print ('Start: test_update_todo_error')
         from src.todoList import put_item
         from src.todoList import update_item
         updated_text = "Aprender más cosas que DevOps y Cloud en la UNIR"
@@ -244,7 +244,15 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         self.assertRaises(TypeError, delete_item("", None))
         print ('End: test_delete_todo_error')
-        
+
+    def test_dynamodb_noExists(self):
+        print ('---------------------')
+        print ('Start: test_dynamodb_noExists')
+
+        from src.todoList import get_items
+        result = get_items()
+        print ('Response GetItems' + str(result))
+        print ('End: test_dynamodb_noExists')        
 
 if __name__ == '__main__':
     unittest.main()
